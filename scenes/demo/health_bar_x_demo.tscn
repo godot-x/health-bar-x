@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b5cs8ohl5j3be"]
+
+[ext_resource type="Script" uid="uid://da10f0px3oj75" path="res://scenes/demo/health_bar_x_demo.gd" id="1_script"]
+
+[node name="HealthBarXDemo" type="Control" unique_id=456618064]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
