@@ -130,8 +130,8 @@ func _compute_fill_rect() -> Rect2:
 	var inner_size = _bar_size - Vector2((border + inset.x) * 2, (border + inset.y) * 2)
 	if inner_size.x <= 0 or inner_size.y <= 0:
 		return Rect2(Vector2(border + inset.x, border + inset.y), Vector2.ZERO)
-	var t = clampf((_display_value - min_value) / maxf(0.001, max_value - min_value), 0, 1)
-	t = clampf(t * 100.0 / 100.0, 0, 1)
+	# _display_value is always normalized 0..100 by set_value/_set_display_value
+	var t = clampf(_display_value / 100.0, 0.0, 1.0)
 	return Rect2(Vector2(border + inset.x, border + inset.y), Vector2(inner_size.x * t, inner_size.y))
 
 func set_value(v: float, animate: bool = true) -> void:
@@ -211,7 +211,7 @@ func _draw() -> void:
 	if fill_rect.size.x > 0 and fill_rect.size.y > 0:
 		HealthBarXDraw.draw_rounded_rect_filled(self, fill_rect, fill_color, radius)
 	elif inner_rect.size.x > 0 and inner_rect.size.y > 0:
-		var fill_w = inner_rect.size.x * clampf((_display_value - min_value) / maxf(0.001, max_value - min_value), 0, 1)
+		var fill_w = inner_rect.size.x * clampf(_display_value / 100.0, 0.0, 1.0)
 		if fill_w > 0:
 			HealthBarXDraw.draw_rounded_rect_filled(self, Rect2(inner_rect.position, Vector2(fill_w, inner_rect.size.y)), fill_color, radius)
 
