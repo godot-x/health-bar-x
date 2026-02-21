@@ -85,6 +85,10 @@ The layout is scrollable and responsive for different resolutions and mobile.
 - Drawing is done in `_draw()`; geometry updates when size, value, or style changes.
 - Shadow uses configurable blur passes; gradient uses strip overlays. Reduce shadow passes on low-end devices if needed.
 
+## Screenshot
+
+https://github.com/user-attachments/assets/f3894a45-c4a1-429a-abc4-4ed8ad700499
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
