@@ -4,12 +4,6 @@
     </a>
 </p>
 
-<p align="center">
-    <a href="https://github.com/godot-x/health-bar-x" target="_blank" rel="noopener noreferrer">
-        <img width="300" src="extras/images/logo.png" alt="HealthBarX - Logo">
-    </a>
-</p>
-
 # HealthBarX
 
 A professional shape-based health bar addon for Godot 4.5+ with full customization. Usable as a UI element (HUD) or as a 2D overlay above characters.
