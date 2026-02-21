@@ -8,6 +8,7 @@ var _scroll: ScrollContainer
 var _vbox: VBoxContainer
 var _value_slider: HSlider
 var _world_value_slider: HSlider
+var _world_offset_y_slider: HSlider
 var _roundness_slider: HSlider
 var _border_slider: HSlider
 var _anim_duration_slider: HSlider
@@ -359,6 +360,7 @@ func _build_world_section() -> void:
 	_world_bar.position = Vector2.ZERO
 
 	_world_value_slider = _add_slider("World bar value", 0, 100, 100, _on_world_value_slider_changed, 1.0)
+	_world_offset_y_slider = _add_slider("World bar Y offset", -80, 20, -48, _on_world_offset_y_changed, 1.0)
 
 	var move_row = HBoxContainer.new()
 	move_row.add_child(Label.new())
@@ -375,6 +377,10 @@ func _build_world_section() -> void:
 func _on_world_value_slider_changed(v: float) -> void:
 	if _world_bar:
 		_world_bar.set_value(v, _style.animation_enabled)
+
+func _on_world_offset_y_changed(v: float) -> void:
+	if _world_bar:
+		_world_bar.follow_offset = Vector2(_world_bar.follow_offset.x, v)
 
 func _add_reset_button() -> void:
 	var btn = Button.new()

@@ -16,7 +16,8 @@ var _cached_fill_rect: Rect2
 var _label_text: String = ""
 var _icon_instance: Node
 var _follow_target: Node2D
-var _follow_offset: Vector2 = Vector2(0, -24)
+var _follow_offset: Vector2 = Vector2(0, -16)
+var _center_on_target: bool = true
 var _billboard_scale: bool = false
 var _base_scale: Vector2 = Vector2.ONE
 
@@ -71,6 +72,12 @@ var _base_scale: Vector2 = Vector2.ONE
 	get:
 		return _follow_offset
 
+@export var center_on_target: bool = true:
+	set(v):
+		_center_on_target = v
+	get:
+		return _center_on_target
+
 @export var billboard_scale: bool = false:
 	set(v):
 		_billboard_scale = v
@@ -97,7 +104,11 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if is_instance_valid(_follow_target):
-		global_position = _follow_target.global_position + _follow_offset
+		var target_pos = _follow_target.global_position
+		if _center_on_target:
+			global_position = target_pos + Vector2(-_bar_size.x * 0.5, _follow_offset.y)
+		else:
+			global_position = target_pos + _follow_offset
 	if _billboard_scale:
 		var cam = get_viewport().get_camera_2d()
 		if cam:
